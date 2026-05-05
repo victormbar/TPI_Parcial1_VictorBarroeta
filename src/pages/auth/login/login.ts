@@ -1,30 +1,39 @@
+import "./login.css"; //Ruta al CSS Login
+
 import type { IUser } from "../../../types/IUser";
-import type { Rol } from "../../../types/Rol";
+import { saveUser } from "../../../utils/localStorage";
 import { navigate } from "../../../utils/navigate";
 
-const form = document.getElementById("form") as HTMLFormElement;
-const inputEmail = document.getElementById("email") as HTMLInputElement;
-//const inputPassword = document.getElementById("password") as HTMLInputElement;
-const selectRol = document.getElementById("rol") as HTMLSelectElement;
+const form = document.getElementById("form-login") as HTMLFormElement;
+const inputEmail = document.getElementById("mail") as HTMLInputElement;
+const inputPassword = document.getElementById("password") as HTMLInputElement;
 
 form.addEventListener("submit", (e: SubmitEvent) => {
-  e.preventDefault();
-  const valueEmail = inputEmail.value;
-  //const valuePassword = inputPassword.value;
-  const valueRol = selectRol.value as Rol;
+    e.preventDefault();
 
-  if (valueRol === "admin") {
-    navigate("/src/pages/admin/home/home.html");
-  } else if (valueRol === "client") {
-    navigate("/src/pages/client/home/home.html");
-  }
+    const email = inputEmail.value;
+    const password = inputPassword.value;
 
-  const user: IUser = {
-    email: valueEmail,
-    role: valueRol,
-    loggedIn: true,
-  };
+    // Verificamos si es el ADMIN (Clave maestra)
+    if (email === "admin@admin.com" && password === "admin2803") {
+        const userAdmin: IUser = {
+            email: email,
+            role: "admin",
+            loggedIn: true,
+        };
+        saveUser(userAdmin); // Guardamos usando tu utilidad
+        alert("👨‍🍳 Bienvenido Administrador");
+        navigate("/src/pages/admin/home/home.html"); // Redirigimos usando tu utilidad
+        return; 
+    }
 
-  const parseUser = JSON.stringify(user);
-  localStorage.setItem("userData", parseUser);
+    // Si no es admin, asume que es CLIENTE 
+  
+    const userClient: IUser = {
+        email: email,
+        role: "client",
+        loggedIn: true,
+    };
+    saveUser(userClient);
+    navigate("/src/pages/store/home/home.html");
 });

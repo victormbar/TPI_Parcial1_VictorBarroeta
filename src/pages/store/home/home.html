@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍕 Food Store</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+    <header>   
+        <div class="header-container">
+            <h1>🍕 Food Store</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Mis Pedidos</a></li>
+                    <li><a href="#">Carrito</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="contenedor-principal">
+        
+        <aside>
+            <details open> <summary>🍔 Categorías</summary>
+                <ul id="lista-categorias">
+                    </ul>
+            </details>
+        </aside>
+
+        <main> 
+            <form class="search-form"> 
+                <input id="buscarProducto" type="text" placeholder="Ej: Hamburguesa Clásica">
+                <button type="submit">Buscar</button> 
+            </form>
+
+            <div id="main-productos"></div>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 🍕 Food Store. Todos los derechos reservados.</p>
+        <p>Contacto: info@foodstore.com | Síguenos: <a href="#">Facebook</a> | <a href="#">Instagram</a></p>
+    </footer>
+
+    <script type="module" src="./home.ts"></script>
+</body>
+</html>

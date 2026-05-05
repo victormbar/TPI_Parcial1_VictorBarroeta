@@ -1,17 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>⚙️ Panel Admin - 🍕 Food Store</title>
 </head>
-
 <body>
-    <h1>Hola desde la vista de admin</h1>
-    <button id="logoutButton">Logout</button>
+    <header>   
+        <div class="header-container">
+            <h1>⚙️ Panel Administración</h1>
+            <nav>
+                <ul>
+                    <li><a href="/src/pages/store/home/home.html">Ir a la Tienda</a></li>
+                    <li><a href="#" id="btn-logout">Cerrar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="admin-container">
+        <!-- Tabla de Productos -->
+        <section class="admin-seccion">
+            <div class="titulo-boton">
+                <h2>Gestión de Productos</h2>
+                <button class="btn-nuevo">+ Nuevo Producto</button>
+            </div>
+            
+            <!-- Aquí iría tu tabla que me pasaste antes, la dejo abreviada para que la pegues -->
+            <table class="tabla-admin">
+                <thead>
+                    <tr><th>ID</th><th>Nombre</th><th>Categoría</th><th>Precio</th><th>Stock</th><th>Acciones</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Hamburguesa Clásica</td><td>Hamburguesas</td><td>$18000</td><td>15</td><td><a href="#">Editar</a></td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Formulario (Agregar rápido) -->
+        <section class="admin-seccion">
+            <h3>Agregar Producto Rápido</h3>
+            <form class="admin-form">
+                <!-- Pega aquí los inputs de tu formulario admin que me pasaste -->
+                 <label>Nombre:</label> <input type="text" placeholder="Ej: Lomito">
+                 <button type="submit" class="btn-guardar">Guardar Producto</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Panel de Administración - Food Store v1.0</p>
+    </footer>
+
+    <!-- Cargamos el TS -->
     <script type="module" src="./home.ts"></script>
 </body>
-
-
 </html>
