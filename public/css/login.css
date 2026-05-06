@@ -43,6 +43,12 @@ body {
     font-size: 35px;
 }
 
+.logo-titulo {
+    width: 40px; /* Ajusta este valor si lo ves muy grande o chico */
+    vertical-align: text-bottom;
+    margin-right: 8px;
+}
+
 .login-form h2 {
     margin-bottom: 20px;
     color: var(--color-texto);

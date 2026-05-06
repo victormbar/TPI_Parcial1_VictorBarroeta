@@ -1,5 +1,3 @@
-import "./login.css"; //Ruta al CSS Login
-
 import type { IUser } from "../../../types/IUser";
 import { saveUser } from "../../../utils/localStorage";
 import { navigate } from "../../../utils/navigate";
@@ -14,26 +12,37 @@ form.addEventListener("submit", (e: SubmitEvent) => {
     const email = inputEmail.value;
     const password = inputPassword.value;
 
-    // Verificamos si es el ADMIN (Clave maestra)
+    // Verificamos si es el ADMIN (Master Key)
     if (email === "admin@admin.com" && password === "admin2803") {
         const userAdmin: IUser = {
             email: email,
-            role: "admin",
+            role: "admin",   //rol asignado de manera predefinida para el admin
             loggedIn: true,
         };
-        saveUser(userAdmin); // Guardamos usando tu utilidad
+        saveUser(userAdmin); //Guarda la sesión del admin en Local Storage
         alert("👨‍🍳 Bienvenido Administrador");
-        navigate("/src/pages/admin/home/home.html"); // Redirigimos usando tu utilidad
-        return; 
+        navigate("/src/pages/admin/home/home.html"); // Redirigimos usando las utils
+        return;
     }
-
-    // Si no es admin, asume que es CLIENTE 
-  
-    const userClient: IUser = {
-        email: email,
-        role: "client",
-        loggedIn: true,
-    };
-    saveUser(userClient);
-    navigate("/src/pages/store/home/home.html");
+    // Validación para clientes: Si el email no es el del admin, se asume que es un cliente y se le asigna el rol de "client"
+    // Obtenemos los usuarios que se registraron previamente (o un array vacío si no hay ninguno)
+    const usuariosRegistrados = JSON.parse(localStorage.getItem("usuariosRegistrados") || "[]");
+    
+    // Buscamos un usuario que coincida con los datos ingresados 
+    const usuarioValido = usuariosRegistrados.find(
+        (user: any) => user.email === email && user.password === password
+    );
+    // Si existe el usuario y la clave es correcta, creamos su sesión y se asigna el rol de client
+    if (usuarioValido) {
+        const userClient: IUser = {
+            email: email,
+            role: "client",
+            loggedIn: true,
+        };
+        saveUser(userClient);
+        navigate("/src/pages/store/home/home.html");
+    } else {
+        // Si no se encuentra un usuario válido, mostramos un mensaje de error. bloqueando el acceso a la tienda.
+        alert("❌ Credenciales incorrectas. Por favor, inténtalo de nuevo. Si no tienes una cuenta, regístrate primero.");
+    }
 });

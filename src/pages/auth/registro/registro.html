@@ -1,14 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Food Store - Registro</title>
+    <link rel="icon" type="image/png" href="/assets/pizza.svg" sizes="32x32">
+    <link rel="stylesheet" href="/css/login.css">
 </head>
-
 <body>
-    <h1>Hola desde el registro</h1>
-</body>
+    <div class="login-container">
+        <form class="login-form" id="form-registro">
+            <h1><img src="/assets/pizza.svg" alt="Logo Food Store" class="logo-titulo"> Food Store</h1>
+            <h2>Crear Cuenta</h2>
 
+            <label for="nombre">Nombre Completo:</label>
+            <input type="text" id="nombre" placeholder="Ej: Juan Pérez" required>
+
+            <label for="mail">Mail:</label>
+            <input type="email" id="mail" placeholder="Ingresa tu mail" required>
+
+            <!-- Agregamos minlength="8" directo en HTML para validación nativa -->
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" placeholder="Mínimo 8 caracteres" required minlength="8">
+
+            <button type="submit">REGISTRARSE</button>
+
+            <p class="registro">
+                ¿Ya tienes cuenta? <a href="../login/login.html">Inicia Sesión acá</a>
+            </p>
+        </form>
+    </div>
+    <script type="module" src="./registro.ts"></script>
+</body>
 </html>
