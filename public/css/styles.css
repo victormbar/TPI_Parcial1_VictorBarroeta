@@ -1,4 +1,4 @@
-/* VARIABLES GLOBALES */
+/* Variables globales / paleta de colores  */
 :root {
     --color-primario: #FF6347;
     --color-fondo: #f4f4f9;
@@ -13,7 +13,7 @@
 body { background-color: var(--color-fondo); color: var(--color-texto); }
 hr { display: none; } /* Limpiamos hr huérfanos */
 
-/* 1. CABECERA */
+/* Header */
 header {
     background-color: var(--color-blanco);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -30,13 +30,13 @@ nav ul { display: flex; list-style: none; gap: 20px; }
 nav a { text-decoration: none; color: var(--color-texto); font-weight: bold; }
 nav a:hover { color: var(--color-primario); }
 
-/* 2. ESTRUCTURA PRINCIPAL */
+/* Estrutura principal pagina */
 .contenedor-principal {
     display: flex; gap: 30px; max-width: 1200px;
     margin: 30px auto; padding: 0 20px; align-items: flex-start;
 }
 
-/* 3. BARRA LATERAL (MENÚ DESPLEGABLE) */
+/* Barra lateral */
 aside {
     width: 250px; flex-shrink: 0; position: sticky; top: 90px;
 }
@@ -54,7 +54,7 @@ details summary {
 }
 details summary::-webkit-details-marker { display: none; } /* Quita flecha Safari/Chrome */
 
-/* Efecto hover: pasa de naranja a blanco */
+/* Efecto hover */
 details summary:hover {
     background-color: var(--color-blanco);
     color: var(--color-primario);
@@ -66,14 +66,14 @@ aside li { margin-bottom: 5px; }
 aside a { display: block; padding: 10px; text-decoration: none; color: var(--color-texto); border-radius: 5px; transition: 0.2s; }
 aside a:hover { background-color: var(--color-fondo); color: var(--color-primario); }
 
-/* 4. CONTENIDO PRINCIPAL */
+/* Contenido main */
 main { flex: 1; }
 
 .search-form { display: flex; gap: 15px; margin-bottom: 30px; }
 .search-form input { flex: 1; padding: 12px; border: 1px solid var(--color-borde); border-radius: 8px; }
 .search-form button { padding: 12px 25px; background: var(--color-primario); color: white; border: none; border-radius: 8px; cursor: pointer; }
 
-/* 5. SECCIONES Y TARJETAS TIPO DELIVERY */
+/* Sección de Categorías y tarjetas */
 .bloque-categoria { margin-bottom: 40px; }
 .titulo-seccion { font-size: 22px; margin-bottom: 15px; border-bottom: 2px solid var(--color-borde); padding-bottom: 10px;}
 
@@ -115,6 +115,183 @@ main { flex: 1; }
     object-fit: cover; border-radius: 8px;
 }
 
-/* 6. PIE DE PÁGINA */
+/* Pie de pagina unificado */
 footer p { text-align: center; padding: 30px 20px; background: var(--color-blanco); color: #666; margin-top: 50px; font-size: 14px;}
 footer a { color: var(--color-primario); text-decoration: none; font-weight: bold; }
+
+/* =========================================
+EXCLUSIVO DEL PANEL ADMIN
+   ========================================= */
+
+/* Contenedor Principal Admin */
+.admin-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.admin-seccion {
+    background: var(--color-blanco);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+/* Tabla de Productos */
+.titulo-boton {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.tabla-admin {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.tabla-admin th,
+.tabla-admin td {
+    padding: 12px;
+    border-bottom: 1px solid var(--color-borde);
+    vertical-align: middle;
+}
+
+.tabla-admin th {
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+}
+
+/* Formulario Admin y Botones */
+.btn-nuevo {
+    background-color: #28a745;
+    color: var(--color-blanco);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.admin-form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--color-texto);
+}
+
+.admin-form input,
+.admin-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--color-borde);
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.admin-form input:focus,
+.admin-form select:focus {
+    border-color: var(--color-focus);
+    outline: none;
+}
+
+.btn-guardar {
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn-guardar:hover {
+    background-color: var(--color-focus);
+}
+
+.btn-editar {
+    background-color: #f0ad4e; /* Naranja/Amarillo de advertencia */
+    color: white;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 8px;
+    transition: background 0.3s;
+}
+
+.btn-editar:hover {
+    background-color: #ec971f;
+}
+
+.btn-eliminar {
+    background-color: #d9534f; /* Rojo de peligro */
+    color: white;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-eliminar:hover {
+    background-color: #c9302c;
+}
+
+/* =========================================
+ESTILOS PARA CARGA Y VISTA PREVIA DE IMAGEN
+========================================= */
+
+/* Contenedor del input de archivo */
+.input-file-container {
+    margin-bottom: 20px;
+}
+
+/* Estilo para el input de tipo file */
+.input-file-custom {
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 2px dashed var(--color-borde);
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    transition: border-color 0.3s;
+}
+
+.input-file-custom:hover {
+    border-color: var(--color-primario);
+}
+
+/* Recuadro para la vista previa de la imagen */
+.img-preview-box {
+    width: 100%;
+    height: 200px;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #fdfdfd;
+}
+
+.img-preview-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.img-preview-placeholder {
+    color: #aaa;
+    font-size: 14px;
+}

@@ -1,14 +1,38 @@
-// src/pages/store/home/home.ts
+import { getUSer } from "../../../utils/localStorage";
 import { PRODUCTS } from "../../../data/data";
 import type { Product, CartItem } from "../../../types/product";
 import "../../../css/styles.css";
+
 // Ojo: Asegúrate de exportar también 'categorias' desde data.ts si quieres renderizar el menú lateral
 
 const mainProductos = document.getElementById("main-productos") as HTMLElement;
 const formBusqueda = document.querySelector(".search-form") as HTMLFormElement;
 const inputBusqueda = document.getElementById("buscarProducto") as HTMLInputElement;
 
-// Función para agregar al carrito (Persistencia)[cite: 15]
+// En el caso de ser administrador, podríamos agregar funcionalidades extra como editar o eliminar productos,
+//  pero eso lo veremos en la sección de administración.
+
+const navLista = document.querySelector("nav ul") as HTMLElement;
+
+// Creamos una función para verificar si el usuario es admin y se modifica el menu de navegación con el panel admin
+
+const verificarAdminParaNav = () => {
+    const userRaw = getUSer(); // Usamos tu utilidad para obtener el usuario
+    if (userRaw) {
+        const user = JSON.parse(userRaw)
+        // Si el usuario es admin, inyectamos el link al panel
+        if (user.role === "admin") {
+            const liAdmin = document.createElement("li");
+            liAdmin.innerHTML = `<a href="/src/pages/admin/home/home.html" style="color: #FF6347; font-weight: bold;">⚙️ Panel Admin</a>`;
+            navLista.appendChild(liAdmin); // Se agrega el nuevo item al menú de navegación
+        }
+    }
+};
+
+// Llamamos a la función
+verificarAdminParaNav();
+
+// Función para agregar al carrito (Persistencia)
 const agregarAlCarrito = (producto: Product) => {
     // Leemos el array actual o creamos uno nuevo
     const carritoActual: CartItem[] = JSON.parse(localStorage.getItem("carrito") || "[]");
@@ -86,3 +110,4 @@ document.addEventListener("DOMContentLoaded", () => {
     const productosDisponibles = PRODUCTS.filter(p => !p.eliminado);
     renderizarProductos(productosDisponibles);
 });
+

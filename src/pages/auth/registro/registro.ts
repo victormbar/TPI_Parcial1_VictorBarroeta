@@ -7,23 +7,24 @@ const inputPassword = document.getElementById("password") as HTMLInputElement;
 
 formRegistro.addEventListener("submit", (e: SubmitEvent) => {
     e.preventDefault();
-
+ // Se define el nuevo usuario a registrar con los valores del formulario
     const nombre = inputNombre.value;
     const email = inputEmail.value;
     const password = inputPassword.value;
 
-    // 1. Traemos la lista de usuarios actual
+    // Traemos la lista de usuarios actualmente registrados desde localStorage o iniciamos un array vacío si no hay ninguno
     const usuariosRegistrados = JSON.parse(localStorage.getItem("usuariosRegistrados") || "[]");
 
-    // 2. Verificamos que el mail no esté en uso usando el método .some() de los arrays
+    // Verificamos que el mail existe o no en el array de usuarios registrados
     const existeCorreo = usuariosRegistrados.some((user: any) => user.email === email);
     
+    // Si existe se interrumpe enviando una alerta al usuario
     if (existeCorreo) {
-        alert("⚠️ Este correo ya está registrado. Por favor, ve a iniciar sesión.");
-        return; // Cortamos el flujo
+        alert("Este correo ya está registrado. Por favor, ve a iniciar sesión.");
+        return;
     }
 
-    // 3. Si todo está bien, creamos el nuevo objeto usuario
+    // Si no existe, se crea un nuevo objeto con los datos del nuevo usuario
     const nuevoUsuario = {
         nombre: nombre,
         email: email,
@@ -31,11 +32,11 @@ formRegistro.addEventListener("submit", (e: SubmitEvent) => {
         role: "client" // Se guarda como cliente por defecto
     };
 
-    // 4. Lo empujamos al array y guardamos en localStorage
+    // Se guarda el nuevo usuario en el array de usuarios registrados y se actualiza localStorage
     usuariosRegistrados.push(nuevoUsuario);
     localStorage.setItem("usuariosRegistrados", JSON.stringify(usuariosRegistrados));
 
-    // 5. Notificamos y enviamos al login
-    alert("✅ ¡Registro exitoso! Ahora puedes iniciar sesión.");
+    // Se Notifica y enviamos al login
+    alert("¡Registro exitoso! Ahora puedes iniciar sesión.");
     navigate("/src/pages/auth/login/login.html");
 });

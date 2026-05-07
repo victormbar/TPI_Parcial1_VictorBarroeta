@@ -1,49 +1,80 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>⚙️ Panel Admin - 🍕 Food Store</title>
+    <link rel="icon" type="image/png" href="/assets/pizza.svg" sizes="32x32">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
+
 <body>
-    <header>   
+    <!-- Header del panel de administración -->
+    <header>
         <div class="header-container">
-            <h1>⚙️ Panel Administración</h1>
+            <h1><img src="/assets/pizza.svg" alt="Logo" style="width:30px"> Panel Administración</h1>
             <nav>
                 <ul>
                     <li><a href="/src/pages/store/home/home.html">Ir a la Tienda</a></li>
-                    <li><a href="#" id="btn-logout">Cerrar Sesión</a></li>
+                    <li><a href="#" id="logoutButton">Cerrar Sesión</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    
+    <!-- Sección principal del panel de administración -->
     <main class="admin-container">
-        <!-- Tabla de Productos -->
         <section class="admin-seccion">
             <div class="titulo-boton">
                 <h2>Gestión de Productos</h2>
                 <button class="btn-nuevo">+ Nuevo Producto</button>
             </div>
-            
-            <!-- Aquí iría tu tabla que me pasaste antes, la dejo abreviada para que la pegues -->
+            <!-- Tabla para mostrar los productos, se llena dinámicamente con TS -->
             <table class="tabla-admin">
                 <thead>
-                    <tr><th>ID</th><th>Nombre</th><th>Categoría</th><th>Precio</th><th>Stock</th><th>Acciones</th></tr>
+                    <tr>
+                        <th>ID</th>
+                        <th>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Categoría</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Acciones</th>
+                    </tr>
                 </thead>
-                <tbody>
-                    <tr><td>1</td><td>Hamburguesa Clásica</td><td>Hamburguesas</td><td>$18000</td><td>15</td><td><a href="#">Editar</a></td></tr>
-                </tbody>
+                <tbody id="tabla-productos-admin"></tbody>
             </table>
         </section>
 
-        <!-- Formulario (Agregar rápido) -->
+        <!-- Formulario oculto para agregar/editar productos, se muestra al hacer clic en "Nuevo Producto" o "Editar" -->
         <section class="admin-seccion">
             <h3>Agregar Producto Rápido</h3>
-            <form class="admin-form">
-                <!-- Pega aquí los inputs de tu formulario admin que me pasaste -->
-                 <label>Nombre:</label> <input type="text" placeholder="Ej: Lomito">
-                 <button type="submit" class="btn-guardar">Guardar Producto</button>
+            <form class="admin-form" id="form-nuevo-producto">
+                <label for="nombreProd">Nombre:</label>
+                <input type="text" id="nombreProd" placeholder="Nombre del plato" required>
+
+                <label for="precioProd">Precio:</label>
+                <input type="number" id="precioProd" placeholder="Ej: 15000" required>
+
+                <label for="stockProd">Stock:</label>
+                <input type="number" id="stockProd" placeholder="Cantidad inicial" required>
+
+                <label for="imgProdFile">Subir Imagen del producto:</label> 
+                <div class="input-file-container">
+                    <input type="file" id="imgProdFile" class="input-file-custom" accept="image/*" required>
+                    <div id="preview-container" class="img-preview-box">
+                        <span class="img-preview-placeholder">No hay imagen seleccionada</span>
+                    </div>
+                </div>
+
+                <label for="categoriaProd">Categoría:</label>
+                <select id="categoriaProd" required>
+                    <option value="Hamburguesas">Hamburguesas</option>
+                    <option value="Pizzas">Pizzas</option>
+                    <option value="Lomitos">Lomitos</option>
+                    <option value="Bebidas">Bebidas</option>
+                </select>
+                <button type="submit" class="btn-guardar">Guardar Producto</button>
             </form>
         </section>
     </main>
@@ -52,7 +83,8 @@
         <p>Panel de Administración - Food Store v1.0</p>
     </footer>
 
-    <!-- Cargamos el TS -->
+    <!-- Se carga TS. -->
     <script type="module" src="./home.ts"></script>
 </body>
+
 </html>
