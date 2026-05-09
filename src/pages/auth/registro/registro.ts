@@ -4,6 +4,7 @@ const formRegistro = document.getElementById("form-registro") as HTMLFormElement
 const inputNombre = document.getElementById("nombre") as HTMLInputElement;
 const inputEmail = document.getElementById("mail") as HTMLInputElement;
 const inputPassword = document.getElementById("password") as HTMLInputElement;
+import { mostrarToast } from "../../../utils/toast";
 
 formRegistro.addEventListener("submit", (e: SubmitEvent) => {
     e.preventDefault();
@@ -20,7 +21,7 @@ formRegistro.addEventListener("submit", (e: SubmitEvent) => {
     
     // Si existe se interrumpe enviando una alerta al usuario
     if (existeCorreo) {
-        alert("Este correo ya está registrado. Por favor, ve a iniciar sesión.");
+        mostrarToast("Este correo ya está registrado. Por favor, ve a iniciar sesión.");
         return;
     }
 
@@ -37,6 +38,6 @@ formRegistro.addEventListener("submit", (e: SubmitEvent) => {
     localStorage.setItem("usuariosRegistrados", JSON.stringify(usuariosRegistrados));
 
     // Se Notifica y enviamos al login
-    alert("¡Registro exitoso! Ahora puedes iniciar sesión.");
+    mostrarToast("¡Registro exitoso! Ahora puedes iniciar sesión.");
     navigate("/src/pages/auth/login/login.html");
 });

@@ -2,6 +2,7 @@ import { PRODUCTS } from "../../../data/data.ts";
 import type { Product } from "../../../types/product";
 import type { ICategory } from "../../../types/category";
 import { checkAuhtUser, logout } from "../../../utils/auth";
+import { mostrarToast } from "../../../utils/toast";
 
 // Se realiza la verificación de seguridad para asegurar el rol de administrador
 checkAuhtUser("/src/pages/auth/login/login.html", "/src/pages/store/home/home.html", "admin");
@@ -33,7 +34,7 @@ const renderizarTablaAdmin = () => {
         // Se determina si la imagen es una ruta o un string Base64
         const fuenteImagen = producto.imagen.startsWith("data:") 
             ? producto.imagen 
-            : `/assets/img/${producto.imagen}`;
+            : `/assets/${producto.imagen}`;
 
         tr.innerHTML = `
             <td>${producto.id}</td>
@@ -102,7 +103,7 @@ formNuevoProducto?.addEventListener("submit", (e: SubmitEvent) => {
 
         formNuevoProducto.reset();
         renderizarTablaAdmin();
-        alert("✅ Operación realizada con éxito");
+        mostrarToast("✅ Operación realizada con éxito");
     };
 
     // Se verifica si se subió una nueva imagen
@@ -131,6 +132,7 @@ tablaBody.addEventListener("click", (e: MouseEvent) => {
             if (indice !== -1) {
                 PRODUCTS.splice(indice, 1); // Se elimina del array
                 renderizarTablaAdmin();
+                mostrarToast("✅ Producto eliminado con éxito");
             }
         }
     }

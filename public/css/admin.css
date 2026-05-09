@@ -134,3 +134,28 @@ footer {
     padding: 20px;
     color: #666;
 }
+
+/* =========================================
+SISTEMA DE NOTIFICACIONES (TOAST)
+========================================= */
+.toast-notificacion {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--color-texto);
+    color: var(--color-blanco);
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    font-weight: bold;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Clase que aplicaremos con JS para que aparezca */
+.toast-notificacion.mostrar {
+    opacity: 1;
+    transform: translateY(0);
+}

@@ -2,6 +2,7 @@ import { getUSer } from "../../../utils/localStorage";
 import { logout } from "../../../utils/auth";
 import { PRODUCTS, getCategories } from "../../../data/data";
 import type { Product, CartItem } from "../../../types/product";
+import { mostrarToast } from "../../../utils/toast";
 
 // Referencias a elementos del DOM
 const mainProductos = document.getElementById("main-productos") as HTMLElement;
@@ -39,7 +40,7 @@ const agregarAlCarrito = (producto: Product) => {
     
     // Guardamos de nuevo en localStorage
     localStorage.setItem("carrito", JSON.stringify(carritoActual));
-    alert(`🛒 ¡${producto.nombre} agregado al carrito!`);
+    mostrarToast(`🛒 ¡${producto.nombre} agregado al carrito!`);
 };
 
 // Se separa la función exclusiva para renderizar el menú lateral con las categorías dinámicamente.
@@ -76,7 +77,7 @@ const renderizarProductos = (productosParaMostrar: Product[]) => {
         article.className = "tarjeta-producto";
         
         //Se verifica si la imagen es agregada de los assets o si es una imagen subida por el admin.
-        const srcImg = producto.imagen.startsWith("data:") ? producto.imagen : `/assets/img/${producto.imagen}`;
+        const srcImg = producto.imagen.startsWith("data:") ? producto.imagen : `/assets/${producto.imagen}`;
 
         // Se inyecta el HTM de cada producto, con su información y el botón para agregar al carrito.
         article.innerHTML = `

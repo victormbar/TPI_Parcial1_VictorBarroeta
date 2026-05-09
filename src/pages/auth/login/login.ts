@@ -1,6 +1,7 @@
 import type { IUser } from "../../../types/IUser";
 import { saveUser } from "../../../utils/localStorage";
 import { navigate } from "../../../utils/navigate";
+import { mostrarToast } from "../../../utils/toast";
 
 const form = document.getElementById("form-login") as HTMLFormElement;
 const inputEmail = document.getElementById("mail") as HTMLInputElement;
@@ -20,7 +21,7 @@ form.addEventListener("submit", (e: SubmitEvent) => {
             loggedIn: true,
         };
         saveUser(userAdmin); //Guarda la sesión del admin en Local Storage
-        alert("👨‍🍳 Bienvenido Administrador");
+        mostrarToast("👨‍🍳 Bienvenido Administrador");
         navigate("/src/pages/admin/home/home.html"); // Redirigimos usando las utils
         return;
     }
@@ -43,6 +44,6 @@ form.addEventListener("submit", (e: SubmitEvent) => {
         navigate("/src/pages/store/home/home.html");
     } else {
         // Si no se encuentra un usuario válido, mostramos un mensaje de error. bloqueando el acceso a la tienda.
-        alert("❌ Credenciales incorrectas. Por favor, inténtalo de nuevo. Si no tienes una cuenta, regístrate primero.");
+        mostrarToast("❌ Credenciales incorrectas. Por favor, inténtalo de nuevo. Si no tienes una cuenta, regístrate primero.");
     }
 });

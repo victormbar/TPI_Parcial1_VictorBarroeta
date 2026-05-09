@@ -350,3 +350,38 @@ ESTILOS PARA CARGA Y VISTA PREVIA DE IMAGEN
     color: #888;
     font-style: italic;
 }
+
+/* Delimitador para las imágenes dentro de las tarjetas del carrito */
+.img-carrito {
+    width: 90px;             
+    height: 90px;            
+    object-fit: cover;      
+    border-radius: 8px;     
+    flex-shrink: 0;         
+}
+
+/* =========================================
+    SISTEMA DE NOTIFICACIONES EMERGENTES
+   ========================================= */
+.toast-notificacion {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--color-texto);
+    color: var(--color-blanco);
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    font-weight: bold;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Clase que aplicaremos para que aparezca */
+.toast-notificacion.mostrar {
+    opacity: 1;
+    transform: translateY(0);
+}
+

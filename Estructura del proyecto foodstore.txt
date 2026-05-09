@@ -1,0 +1,31 @@
+src/
+├── data/
+│     └── data.ts            ← Base de datos fija inicial
+├── pages/
+│   ├── store/
+│   │   ├── home/
+│   │   │   ├── home.html   ← Catálogo principal
+│   │   │   └── home.ts     ← Lógica: render, búsqueda, filtros
+│   │   └── cart/
+│   │       ├── cart.html   ← Vista del carrito
+│   │       └── cart.ts     ← Lógica: cálculos, persistencia
+│   ├── auth/
+│   │   ├── login/          ← Inicio de sesión
+│   │   └── registro/       ← Creación de clientes
+│   └── admin/home			  ← Panel CRUD
+│       ├── home.html       ← Vista del panel admin
+│       └── home.ts         ← Lógica: agregador, edición, eliminado
+├── types/
+│   ├── product.ts          ← Interfaces Product y CartItem
+│   └── category.ts         ← Interface ICategory
+├── utils/
+│   ├── auth.ts             ← Protección de rutas
+│   ├── localStorage.ts     ← Helpers de lectura/escritura
+│   ├── navigate.ts         ← Lógica de enrutamiento
+│   └── toast.ts            ← Sistema de notificaciones custom
+public/
+├── assets/			     ← Imágenes del catalogo
+└── css/
+    ├── styles.css          ← Hoja de estilos centralizada global
+    └── login.css			 ← Hoja de estilos del login y registro
+    └── admin.css			 ← Hoja de estilos del panel admin

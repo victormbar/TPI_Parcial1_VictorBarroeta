@@ -1,5 +1,6 @@
 import { logout } from "../../../utils/auth";
 import type { CartItem } from "../../../types/product";
+import { mostrarToast } from "../../../utils/toast";
 
 // Se seleccionan las referencias a elementos del DOM del carrito
 const contenedorCarrito = document.getElementById("contenedor-carrito") as HTMLElement;
@@ -39,7 +40,7 @@ const renderizarCarrito = () => {
         divItem.className = "tarjeta-producto-carrito";
         
         // Se verifica si la imagen viene del local o fue subida en base64
-        const srcImg = item.imagen.startsWith("data:") ? item.imagen : `/assets/img/${item.imagen}`;
+        const srcImg = item.imagen.startsWith("data:") ? item.imagen : `/assets/${item.imagen}`;
 
         // Se inyecta el HTML respetando la separación de estilos en CSS
         divItem.innerHTML = `
@@ -101,6 +102,7 @@ btnVaciar?.addEventListener("click", () => {
 // Se implementa la lógica para cerrar sesión
 document.getElementById("logoutButton")?.addEventListener("click", (e) => {
     e.preventDefault();
+    mostrarToast(" Sesión cerrada con éxito.");
     logout();
 });
 
