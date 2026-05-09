@@ -116,3 +116,9 @@ public/
     └── admin.css			 ← Hoja de estilos del panel admin
 
 ```
+---
+Video 🎥
+
+## 📌 Enlace al video de YouTube
+
+[Ver en YouTube](https://youtu.be/-GWKM8C1bkc)
