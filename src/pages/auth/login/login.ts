@@ -13,7 +13,7 @@ form.addEventListener("submit", (e: SubmitEvent) => {
     const email = inputEmail.value;
     const password = inputPassword.value;
 
-    // Verificamos si es el ADMIN (Master Key)
+    // Verificamos si es el ADMIN
     if (email === "admin@admin.com" && password === "admin2803") {
         const userAdmin: IUser = {
             email: email,
@@ -26,7 +26,7 @@ form.addEventListener("submit", (e: SubmitEvent) => {
         return;
     }
     // Validación para clientes: Si el email no es el del admin, se asume que es un cliente y se le asigna el rol de "client"
-    // Obtenemos los usuarios que se registraron previamente (o un array vacío si no hay ninguno)
+    // Obtenemos los usuarios que se registraron previamente
     const usuariosRegistrados = JSON.parse(localStorage.getItem("usuariosRegistrados") || "[]");
     
     // Buscamos un usuario que coincida con los datos ingresados 

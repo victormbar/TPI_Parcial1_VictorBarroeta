@@ -13,14 +13,14 @@ const obtenerCarrito = (): CartItem[] => {
     return datos ? JSON.parse(datos) : [];
 };
 
-// Se crea la función para sumar todo y mostrar el total (HU-P1-05)
+// Se crea la función para sumar todo y mostrar el total 
 const actualizarTotal = (carrito: CartItem[]) => {
     // Se usa reduce para sumar el precio por la cantidad de cada producto
     const total = carrito.reduce((acumulador, item) => acumulador + (item.precio * item.cantidad), 0);
     resumenTotal.innerHTML = `<h3>Total de la compra: $${total}</h3>`;
 };
 
-// Se crea la función para pintar los productos del carrito en pantalla (HU-P1-04)
+// Se crea la función para pintar los productos del carrito en pantalla
 const renderizarCarrito = () => {
     const carrito = obtenerCarrito();
     contenedorCarrito.innerHTML = ""; // Se limpia el contenedor

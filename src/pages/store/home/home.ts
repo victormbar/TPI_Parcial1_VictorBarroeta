@@ -137,7 +137,7 @@ listaCategoriasUI.addEventListener("click", (e: MouseEvent) => {
     }
 });
 
-// NUEVO: Lógica para manejar el cierre de sesión desde el navbar.
+// Lógica para manejar el cierre de sesión desde el navbar.
 document.getElementById("logoutButton")?.addEventListener("click", (e) => {
     e.preventDefault();
     logout();
