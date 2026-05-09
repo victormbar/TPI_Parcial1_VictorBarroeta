@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🍕 Food Store</title>
-    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Food Store - Catálogo</title>
+    <link rel="icon" type="image/png" href="/assets/pizza.svg" sizes="32x32">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
+
 <body>
-    <header>   
+    <header>
         <div class="header-container">
-            <h1><img src="/assets/pizza.svg" sizes="32x32"alt="Logo Food Store" class="logo-titulo" > Food Store</h1>
+            <h1><img src="/assets/pizza.svg" alt="Logo Food Store" class="logo-titulo"> Food Store</h1>
             <nav>
                 <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Mis Pedidos</a></li>
-                    <li><a href="#">Carrito</a></li>
+                    <li><a href="/src/pages/store/home/home.html">Inicio</a></li>
+                    <li><a href="/src/pages/store/cart/cart.html">🛒 Carrito</a></li>
+                    <li><a href="#" id="logoutButton">Cerrar Sesión</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <div class="contenedor-principal">
-        
+
         <aside>
-            <details open> <summary>🍔 Categorías</summary>
+            <details open>
+                <summary><img src="/assets/pizza.svg" alt="Logo Food Store" class="logo-titulo"> Categorías</summary>
                 <ul id="lista-categorias">
-                    </ul>
+                </ul>
             </details>
         </aside>
 
-        <main> 
-            <form class="search-form"> 
+        <main>
+            <form class="search-form" id="form-busqueda">
                 <input id="buscarProducto" type="text" placeholder="Ej: Hamburguesa Clásica">
-                <button type="submit">Buscar</button> 
+                <button type="submit">Buscar</button>
             </form>
 
             <div id="main-productos"></div>
@@ -40,7 +44,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 🍕 Food Store. Todos los derechos reservados.</p>
+        <p>&copy; 2026 <img src="/assets/pizza.svg" alt="Logo Food Store" class="logo-titulo"> Food Store. Todos los derechos reservados.</p>
         <p>Contacto: info@foodstore.com | Síguenos: <a href="#">Facebook</a> | <a href="#">Instagram</a></p>
     </footer>
 

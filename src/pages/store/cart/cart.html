@@ -1,34 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Carrito - 🍕 Food Store</title>
-    <link rel="stylesheet" href="/css/styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Store - Mi Carrito</title>
+    <link rel="icon" type="image/png" href="/assets/pizza.svg" sizes="32x32">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
-
 <body>
-
-    <header>
-        <h1>🍕 Food Store</h1>
-        <nav>
-            <ul>
-                <li><a href="../home/home.html">← Volver al catálogo</a></li>
-            </ul>
-        </nav>
+    <header>   
+        <div class="header-container">
+            <h1><img src="/assets/pizza.svg" alt="Logo Food Store" class="logo-titulo"> Food Store</h1>
+            <nav>
+                <ul>
+                    <li><a href="/src/pages/store/home/home.html">Volver al Catálogo</a></li>
+                    <li><a href="#" id="logoutButton">Cerrar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <div class="cart-wrapper">
-        <h2 class="cart-title">Tu carrito</h2>
-        <div id="contenedor-carrito"></div>
-    </div>
+    <main class="admin-container">
+        <section class="admin-seccion">
+            <h2 class="titulo-seccion">Tu selección de productos</h2>
+            
+            <div id="contenedor-carrito">
+                </div>
+
+            <div id="resumen-total" class="resumen-total">
+                </div>
+
+            <div class="acciones-carrito">
+                <button id="btn-vaciar" class="btn-eliminar">Vaciar Carrito</button>
+                <button id="btn-finalizar" class="btn-guardar">Finalizar Compra (Simulación)</button>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>© 2026 Food Store. Todos los derechos reservados.</p>
+        <p>&copy; 2026 <img src="/assets/pizza.svg" alt="Logo Food Store" class="logo-titulo"> Food Store. Todos los derechos reservados.</p>
     </footer>
 
     <script type="module" src="./cart.ts"></script>
 </body>
-
 </html>

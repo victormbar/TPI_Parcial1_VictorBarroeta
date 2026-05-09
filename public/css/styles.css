@@ -14,6 +14,17 @@ body { background-color: var(--color-fondo); color: var(--color-texto); }
 hr { display: none; } /* Limpiamos hr huérfanos */
 
 /* Header */
+.logo-titulo {
+    width: 35px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.link-admin {
+    color: var(--color-primario) !important;
+    font-weight: bold;
+}
+
 header {
     background-color: var(--color-blanco);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -25,8 +36,8 @@ header {
     max-width: 1200px; margin: 0 auto; padding: 15px 20px;
     display: flex; justify-content: space-between; align-items: center;
 }
-.header-container h1 { color: var(--color-primario); font-size: 24px; }
-nav ul { display: flex; list-style: none; gap: 20px; }
+.header-container h1 { color: var(--color-primario); font-size: 25px; }
+nav ul { display: flex; list-style: none; gap: 30px; }
 nav a { text-decoration: none; color: var(--color-texto); font-weight: bold; }
 nav a:hover { color: var(--color-primario); }
 
@@ -126,7 +137,7 @@ EXCLUSIVO DEL PANEL ADMIN
 /* Contenedor Principal Admin */
 .admin-container {
     max-width: 1000px;
-    margin: 40px auto;
+    margin: 10px auto 40px auto;
     padding: 0 20px;
 }
 
@@ -294,4 +305,48 @@ ESTILOS PARA CARGA Y VISTA PREVIA DE IMAGEN
 .img-preview-placeholder {
     color: #aaa;
     font-size: 14px;
+}
+
+/* Estilos para ítems dentro del carrito */
+
+.tarjeta-producto-carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-blanco);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid var(--color-borde);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.resumen-total {
+    text-align: right;
+    margin-top: 20px;
+    padding: 15px;
+    border-top: 2px solid var(--color-primario);
+    color: var(--color-primario);
+}
+
+.acciones-carrito {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-quitar {
+    background-color: #f0ad4e;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.mensaje-vacio {
+    text-align: center;
+    padding: 40px;
+    color: #888;
+    font-style: italic;
 }
